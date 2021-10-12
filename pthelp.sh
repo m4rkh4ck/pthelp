@@ -1,16 +1,16 @@
 #!/bin/bash
 
-#Pulisce la pagina
+#Clear the page
 clear
 
-#Variabili colore
+#Color variables
 RED='\033[1;31m'
 GREEN='\033[0;32m'
 WHITE='\033[1;37m'
 YELLOW='\033[1;33m'
 LCYAN="\e[1;36m"
 
-#Titolo
+#Title
 echo -e "${GREEN}"
 echo "██████╗ ████████╗██╗  ██╗███████╗██╗     ██████╗ ";
 echo "██╔══██╗╚══██╔══╝██║  ██║██╔════╝██║     ██╔══██╗";
@@ -31,7 +31,7 @@ echo -e "${RED}"
 echo "DO NOT USE THIS TOOL FOR UNETHICAL PURPOSES!!!"
 echo ""
 
-#Inizio script
+#Script begin
 echo -e "${WHITE}"
 echo -n "Please type the ip address or the url of the target: "
 read url
@@ -69,7 +69,9 @@ do
             echo -e "${YELLOW}"
             echo "Type your low privilege user"
             read utente
-            su $utente; firefox $url &
+            echo "Type web-port"
+            read portweb
+            runuser -u $utente -- firefox $url:$portweb &
             echo -e "${WHITE}"
             ;;   
         "HARVESTING")
@@ -159,7 +161,7 @@ do
             
           "INTENSE SCAN")
             echo -e "${YELLOW}"
-            nmap -sS -sV -Pn $url
+            nmap -A -Pn $url
             echo -e "${WHITE}"
             ;;
          "FAST SCAN")
