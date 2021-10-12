@@ -4,4 +4,8 @@ It's intended to be a suite of useful tools for penetration testing running on k
 
 EXAMPLE:
 
+git clone https://github.com/m4rkh4ck/pthelp.git
+
+chmod +x pthelp.sh
+
 ./pthelp.sh
