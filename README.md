@@ -2,6 +2,8 @@
 # What is pthelp?
 It's intended to be a suite of useful tools for penetration testing running on kali linux. You can add the tools you deem appropriate by modifying the PS3 options. It's advisable to launch the program as a super user. If you want to use pthelp in other debian-based Linux distribution you have to apt install the tool you want to include in it.
 
+Please report any bugs, advice is welcome.
+
 EXAMPLE:
 
 git clone https://github.com/m4rkh4ck/pthelp.git
