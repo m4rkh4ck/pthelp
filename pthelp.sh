@@ -95,7 +95,17 @@ do
             ;;
         "Shell TTY")
             echo -e "${YELLOW}"
-            echo 'python -c' 'import pty; pty.spawn("/bin/sh")'
+            echo "python -c 'import pty; pty.spawn(\"/bin/sh\")'"
+            echo ""
+            echo "echo os.system('/bin/bash')"
+            echo ""
+            echo "/bin/sh -i"
+            echo ""
+            echo 'perl: exec "/bin/sh";'
+            echo ""
+            echo 'ruby: exec "/bin/sh"'
+            echo ""
+            echo "lua: os.execute('/bin/sh')"
             echo -e "${WHITE}"
             ;;       
         "Reverse_shell_php")
