@@ -81,9 +81,9 @@ do
                     [-e DNS_SERVER] [-t DNS_TLD] [-r] [-n] [-c] [-f FILENAME] [-b SOURCE]
                     theHarvester: error: the following arguments are required: -d/--domain"
             echo ""
-            echo  "Type the tag and harvest information : "
+            echo  "Type one additional tag or press Enter to start TheHarvester: "
             read input
-            theHarvester $input
+            theHarvester -d $url -l 500 -b google $input
             echo -e "${WHITE}"     
             ;;    
         "Hash identifier")
