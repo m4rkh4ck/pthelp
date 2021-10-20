@@ -37,8 +37,10 @@ echo -e "${WHITE}"
 echo -n "Please type the ip address or the url of the target: "
 read url
 
+#PS3
 echo -e "${WHITE}"
-PS3='Choose what to do ---> '
+
+PS3="MAKE YOUR CHOICE----> # "
 options=("Spawn new terminal" "OpenVPN" "KillVPN" "Net interfaces" "Open in browser" "Harvesting" "Hash identifier" "Shell TTY" "Reverse_shell_php" "Reverse shell cheat sheets" "Intense scan" "Fast scan" "Custom scan" "Wordpress scan" "Dirb" "Open metasploit" "Open wireshark" "Search a public exploit" "GTFOBins" "Ssh" "Ftp" "Quit")
 
 select opt in "${options[@]}"
