@@ -31,6 +31,7 @@ echo "############################################################"
 echo -e "${RED}"
 echo "DO NOT USE THIS TOOL FOR UNETHICAL PURPOSES!!!"
 echo ""
+echo -e "${YELLOW}#pthelp v1.0#"
 
 #Script begin
 echo -e "${WHITE}"
