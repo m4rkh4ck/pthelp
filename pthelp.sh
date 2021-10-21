@@ -42,7 +42,7 @@ read url
 echo -e "${WHITE}"
 
 PS3="MAKE YOUR CHOICE----> # "
-options=("Spawn new terminal" "OpenVPN" "KillVPN" "Net interfaces" "Open in browser" "Harvesting" "Hash identifier" "Shell TTY" "Reverse_shell_php" "Reverse shell cheat sheets" "Intense scan" "Fast scan" "Custom scan" "Wordpress scan" "Dirb" "Open metasploit" "Open wireshark" "Search a public exploit" "GTFOBins" "Ssh" "Ftp" "Quit")
+options=("Spawn new terminal" "OpenVPN" "KillVPN" "Net interfaces" "Open in browser" "Harvesting" "Hash identifier" "Shell TTY" "Reverse_shell_php" "Reverse shell cheat sheets" "Intense scan" "Fast scan" "Custom scan" "Wordpress scan" "Dirb" "Open metasploit" "Install seclists" "Open wireshark" "Search a public exploit" "GTFOBins" "Ssh" "Ftp" "Quit")
 
 select opt in "${options[@]}"
 do
@@ -209,6 +209,13 @@ do
             msfconsole -q
             echo -e "${WHITE}"
             ;;
+          "Install seclists")
+            echo ""
+            echo -e "${GREEN1}Seclists it's a collection of multiple types of lists used during security assessments, collected in one place. List types include usernames, passwords, URLs, sensitive data patterns, fuzzing payloads, web shells, and many more. The goal is to enable a security tester to pull this repository onto a new testing box and have access to every type of list that may be needed."
+            echo -e "${YELLOW}"
+            apt install seclists
+            echo -e "${WHITE}"
+            ;;
           "Open wireshark")
             echo "Press enter to return to the main menu"
              wireshark &
@@ -225,9 +232,11 @@ do
             echo "GTFOBins is a curated list of Unix binaries that can be used to bypass local security restrictions"
             echo "in misconfigured systems"
             echo -e "${YELLOW}"
-            echo "Type your low privilege user"
+            echo "Type your low privilege user:"
             read utente1
-            runuser -u $utente1 -- firefox https://gtfobins.github.io/ &
+            echo "Type the binary to search:"
+            read binary
+            runuser -u $utente1 -- firefox https://gtfobins.github.io/gtfobins/$binary/ &
             echo -e "${WHITE}"
             ;;
 
