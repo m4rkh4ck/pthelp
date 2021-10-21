@@ -42,7 +42,7 @@ read url
 echo -e "${WHITE}"
 
 PS3="MAKE YOUR CHOICE----> # "
-options=("Spawn new terminal" "OpenVPN" "KillVPN" "Net interfaces" "Open in browser" "Harvesting" "Hash identifier" "Shell TTY" "Reverse_shell_php" "Reverse shell cheat sheets" "Intense scan" "Fast scan" "Custom scan" "Wordpress scan" "Dirb" "Open metasploit" "Install seclists" "Open wireshark" "Search a public exploit" "GTFOBins" "Ssh" "Ftp" "Quit")
+options=("Spawn new terminal" "OpenVPN" "KillVPN" "Net interfaces" "Open in browser" "Open burpsuite" "Harvesting" "Hash identifier" "Shell TTY" "Reverse_shell_php" "Reverse shell cheat sheets" "Intense scan" "Fast scan" "Custom scan" "Wordpress scan" "Dirb" "Open metasploit" "Install seclists" "Open wireshark" "Search a public exploit" "GTFOBins" "Ssh" "Ftp" "Quit")
 
 select opt in "${options[@]}"
 do
@@ -77,7 +77,14 @@ do
             read portweb
             runuser -u $utente -- firefox $url:$portweb &
             echo -e "${WHITE}"
-            ;;   
+            ;;
+        "Open burpsuite")
+            echo -e "${YELLOW}"
+            echo "Type your low privilege user"
+            read utente1
+            runuser -u $utente1 -- burpsuite &
+            echo -e "${WHITE}"
+            ;;     
         "Harvesting")
             echo -e "${YELLOW}"
             echo "usage: theHarvester [-h] -d DOMAIN [-l LIMIT] [-S START] [-g] [-p] [-s] [--screenshot SCREENSHOT] [-v]
@@ -233,10 +240,10 @@ do
             echo "in misconfigured systems"
             echo -e "${YELLOW}"
             echo "Type your low privilege user:"
-            read utente1
+            read utente2
             echo "Type the binary to search:"
             read binary
-            runuser -u $utente1 -- firefox https://gtfobins.github.io/gtfobins/$binary/ &
+            runuser -u $utente2 -- firefox https://gtfobins.github.io/gtfobins/$binary/ &
             echo -e "${WHITE}"
             ;;
 
