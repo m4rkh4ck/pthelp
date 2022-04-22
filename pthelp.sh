@@ -31,7 +31,7 @@ echo "############################################################"
 echo -e "${RED}"
 echo "DO NOT USE THIS TOOL FOR UNETHICAL PURPOSES!!!"
 echo ""
-echo -e "${YELLOW}#pthelp v1.0#"
+echo -e "${YELLOW}#pthelp v1.1#"
 
 #Script begin
 echo -e "${WHITE}"
@@ -42,11 +42,14 @@ read url
 echo -e "${WHITE}"
 
 PS3="MAKE YOUR CHOICE----> # "
-options=("Spawn new terminal" "OpenVPN" "KillVPN" "Net interfaces" "Open in browser" "Open burpsuite" "Harvesting" "Hash identifier" "Shell TTY" "Reverse_shell_php" "Reverse shell cheat sheets" "Intense scan" "Fast scan" "Custom scan" "Wordpress scan" "Dirb" "Open metasploit" "Install seclists" "Open wireshark" "Search a public exploit" "GTFOBins" "Ssh" "Ftp" "Quit")
+options=("Install all the necessary tools" "Spawn new terminal" "OpenVPN" "KillVPN" "Net interfaces" "Open in browser" "Open burpsuite" "Harvesting" "Hash identifier" "Shell TTY" "Reverse_shell_php" "Reverse shell cheat sheets" "Intense scan" "Fast scan" "Custom scan" "Wordpress scan" "Dirb" "Open metasploit" "Install seclists" "Open wireshark" "Search a public exploit" "GTFOBins" "Ssh" "Ftp" "Quit")
 
 select opt in "${options[@]}"
 do
     case $opt in
+    	"Install all the necessary tools")
+    	    sudo apt update && apt upgrade && apt install qterminal && apt install openvpn && apt install burpsuite && apt install theharvester && apt install hash-identifier && apt install nmap && apt install wpscan && apt install dirb && apt install wireshark && apt install searchsploit &
+    	    ;;
         "Spawn new terminal")
             qterminal &
             ;;
@@ -208,7 +211,7 @@ do
             echo -e "${YELLOW}"
             echo "Insert a port: "
             read port1
-            dirb http://$url/$port1
+            dirb http://$url:$port1
             echo -e "${WHITE}"
             ;;
           "Open metasploit")
@@ -237,7 +240,7 @@ do
           "GTFOBins")
             echo -e "${GREEN1}"
             echo "GTFOBins is a curated list of Unix binaries that can be used to bypass local security restrictions"
-            echo "in misconfigured systems"
+            echo "in misconfigured systems."
             echo -e "${YELLOW}"
             echo "Type your low privilege user:"
             read utente2
