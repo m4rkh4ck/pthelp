@@ -42,14 +42,11 @@ read url
 echo -e "${WHITE}"
 
 PS3="MAKE YOUR CHOICE----> # "
-options=("Install all the necessary tools" "Spawn new terminal" "OpenVPN" "KillVPN" "Net interfaces" "Open in browser" "Open burpsuite" "Harvesting" "Hash identifier" "Shell TTY" "Reverse_shell_php" "Reverse shell cheat sheets" "Intense scan" "Fast scan" "Custom scan" "Wordpress scan" "Dirb" "Open metasploit" "Install seclists" "Open wireshark" "Search a public exploit" "GTFOBins" "Ssh" "Ftp" "Quit")
+options=("Spawn new terminal" "OpenVPN" "KillVPN" "Net interfaces" "Open in browser" "Open burpsuite" "Harvesting" "Hash identifier" "Shell TTY" "Reverse_shell_php" "Reverse shell cheat sheets" "Intense scan" "Fast scan" "Custom scan" "Wordpress scan" "Dirb" "Open metasploit" "Install seclists" "Open wireshark" "Search a public exploit" "GTFOBins" "Ssh" "Ftp" "Quit")
 
 select opt in "${options[@]}"
 do
     case $opt in
-    	"Install all the necessary tools")
-    	    sudo apt update && apt upgrade && apt install qterminal && apt install openvpn && apt install theharvester && apt install hash-identifier && apt install wpscan && apt install dirb && apt install searchsploit &
-    	    ;;
         "Spawn new terminal")
             qterminal &
             ;;
