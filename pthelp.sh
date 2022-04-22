@@ -31,7 +31,7 @@ echo "############################################################"
 echo -e "${RED}"
 echo "DO NOT USE THIS TOOL FOR UNETHICAL PURPOSES!!!"
 echo ""
-echo -e "${YELLOW}#pthelp v1.1#"
+echo -e "${YELLOW}#pthelp v1.0#"
 
 #Script begin
 echo -e "${WHITE}"
@@ -48,7 +48,7 @@ select opt in "${options[@]}"
 do
     case $opt in
     	"Install all the necessary tools")
-    	    sudo apt install qterminal && apt install openvpn && apt install burpsuite && apt install theharvester && apt install hash-identifier && apt install nmap && apt install wpscan && apt install dirb && apt install wireshark && apt install searchsploit
+    	    sudo apt update && apt upgrade && apt install qterminal && apt install openvpn && apt install theharvester && apt install hash-identifier && apt install wpscan && apt install dirb && apt install searchsploit &
     	    ;;
         "Spawn new terminal")
             qterminal &
