@@ -48,7 +48,7 @@ select opt in "${options[@]}"
 do
     case $opt in
     	"Install all the necessary tools")
-    	    sudo apt update && apt upgrade && apt install qterminal && apt install openvpn && apt install burpsuite && apt install theharvester && apt install hash-identifier && apt install nmap && apt install wpscan && apt install dirb && apt install wireshark && apt install searchsploit &
+    	    sudo apt install qterminal && apt install openvpn && apt install burpsuite && apt install theharvester && apt install hash-identifier && apt install nmap && apt install wpscan && apt install dirb && apt install wireshark && apt install searchsploit &
     	    ;;
         "Spawn new terminal")
             qterminal &
